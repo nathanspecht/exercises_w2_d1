@@ -57,3 +57,27 @@ class RPNCalculator < Array
   end
 
 end
+
+if __FILE__ == $PROGRAM_NAME
+  instruction_file = ARGV[0]
+  calculator = RPNCalculator.new
+  if instruction_file
+    instructions = File.readlines(instruction_file)
+    instructions.each do |instruction|
+      puts calculator.evaluate(instruction.chomp)
+    end
+
+  else
+    while true
+      instructions ||= ""
+      next_instruction = $stdin.gets
+      instructions << "#{next_instruction.chomp} "
+      if next_instruction == "\n"
+        puts calculator.evaluate(instructions.strip)
+        exit
+      end
+    end
+  end
+
+
+end

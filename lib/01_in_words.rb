@@ -1,3 +1,5 @@
+require 'byebug'
+
 class Fixnum
 
 ONES = %w(one  two  three
@@ -11,6 +13,9 @@ TEENS = %w(eleven  twelve  thirteen
 TENS = %w(ten  twenty  thirty
           forty  fifty  sixty
           seventy  eighty  ninety)
+
+MAGNITUDE = %w(hundred thousand million
+               billion trillion)
 
   def in_words
     return 'zero' if self == 0
@@ -74,4 +79,23 @@ TENS = %w(ten  twenty  thirty
 
     num_in_words
   end
+
+  # def mag_in_words(current)
+  #   exponents = [2,3,6,9,12]
+  #   exponents.each_with_index {
+  #     |exp, i| idx = i if current / (10 ** exp) > 0 }
+  #   MAGNITUDE[idx] if current >= 100
+  # end
+
+  #   current = current / (10 ** exponents[idx])
+  #   if current > 0
+  #     num = current.in_words
+  #     num_in_words << "#{num} #{mag_in_words}"
+  #     num_in_words << " " if remaining > 0
+  #   end
+  #   num_in_words
+  # end
 end
+
+# debugger
+# 1000000000000.in_words
